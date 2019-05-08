@@ -5,7 +5,7 @@
 unsigned long long int C(int n, int m) { // Pascal's Triangle
     int i = 0;
     int j = 0;
-	unsigned long long ret = 0;
+    unsigned long long ret = 0;
     long**arr = (long **)calloc((n+1), sizeof(long long *));
     for(i=0; i<=n; i++) {
         arr[i] = (long *)calloc((i+1), sizeof(long long));

@@ -18,7 +18,7 @@ unsigned long long int C(int n, int m) { // Pascal's Triangle
 	ret = arr[n][m];
 	for(i=0; i<n; i++)
 		free(arr[i]);
-	free(arr);
+	free(arr); 
     return ret;
 }
 

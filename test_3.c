@@ -15,40 +15,40 @@ unsigned long long int C(int n, int m) { // Pascal's Triangle
         for(j=1; j<i; j++) 
             arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
     }
-	ret = arr[n][m];
-	for(i=0; i<n; i++)
-		free(arr[i]);
-	free(arr); 
+    ret = arr[n][m];
+    for(i=0; i<n; i++)
+        free(arr[i]);
+    free(arr); 
     return ret;
 }
 
 int solution(int N) {
-	int ret = 0;
-	int i = 0;
-	unsigned long long sum = 0;
-	int exp = 0;
-	int len = N*log10(11) + 1;
-	long *map = (long *)calloc(len, sizeof(long long));
-	for(i=0, exp=N; i<=N; i++, exp=N-i) {
-		sum = C(N, i);
-		while(sum > 0) {
-			map[exp++] += (sum % 10);
-			sum /= 10;
-		}
-	}
-	for(i=0; i<len; i++) {
-		if(map[i] > 9) {
-			map[i+1] += (map[i] / 10);
-			map[i] = map[i] % 10;
-		}
-		if(map[i] == 1)
-			ret++;
-	}
-	free(map);
-	return ret;
+    int ret = 0;
+    int i = 0;
+    unsigned long long sum = 0;
+    int exp = 0;
+    int len = N*log10(11) + 1;
+    long *map = (long *)calloc(len, sizeof(long long));
+    for(i=0, exp=N; i<=N; i++, exp=N-i) {
+        sum = C(N, i);
+        while(sum > 0) {
+            map[exp++] += (sum % 10);
+            sum /= 10;
+        }
+    }
+    for(i=0; i<len; i++) {
+        if(map[i] > 9) {
+            map[i+1] += (map[i] / 10);
+            map[i] = map[i] % 10;
+        }
+        if(map[i] == 1)
+            ret++;
+    }
+    free(map);
+    return ret;
 }
 
 void main() {
-	int N = 67; // Max val
-	printf("11(%d)=%d\n", N, solution(N));
+    int N = 67; // Max val
+    printf("11(%d)=%d\n", N, solution(N));
 }
